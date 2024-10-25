@@ -1,0 +1,39 @@
+<ion-content class="content-container" >
+  <ion-list>    
+    <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="filterItems()" placeholder="Pesquisar..."></ion-searchbar>
+    <div class="separator"></div>
+    <ion-item color="white">
+      <ion-label class="section-title">Serviços</ion-label>
+    </ion-item>
+    <div class="card-container">
+      <ion-item color="white" *ngFor="let service of filteredServiceOptions" [routerLink]="service.link">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <div class="icon-title-container">
+              <ion-icon [name]="service.icon" class="icon-custom"></ion-icon>
+            </div>
+            <ion-card-title>{{ service.title }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+    </div>
+  </ion-list>
+  <div class="separator"></div>
+  <ion-list>
+    <ion-item color="white">
+      <ion-label class="section-title">Financeiro</ion-label>
+    </ion-item>
+    <div class="card-container">
+      <ion-item color="white" *ngFor="let finance of filteredFinanceOptions" [routerLink]="finance.link">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <div class="icon-title-container">
+              <ion-icon [name]="finance.icon" class="icon-custom"></ion-icon>
+            </div>
+            <ion-card-title>{{ finance.title }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

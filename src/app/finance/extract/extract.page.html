@@ -1,0 +1,35 @@
+<ion-header  >
+  <ion-toolbar >
+    <ion-buttons slot="start" class="custom-button">
+      <ion-button (click)="goBack()" >
+        <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Extrato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Competência: {{ extract?.period  }}</ion-card-title>
+      <ion-card-subtitle>Total: {{ extract?.totalAmount  | currency:'BRL':'symbol':'1.2-2' }}</ion-card-subtitle>
+      <ion-card-subtitle>Responsável: {{ extract?.responsiblePerson  }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header  >
+      <ion-label class="custom-label" >Lançamentos</ion-label>
+    </ion-list-header>
+
+    <ion-item  *ngFor="let launch  of extract?.launches">
+      <ion-label>
+        <h2>{{ launch?.description  }}</h2>
+        <p>Prestador: {{ launch?.providerName  }}</p>
+        <p>Vencimento: {{ launch?.dueDate  }}</p>
+        <p>Valor Coparticipação: {{ launch?.copaymentAmount  | currency:'BRL':'symbol':'1.2-2' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
